@@ -28,8 +28,41 @@ int load()//加载原始数据
 	for (i=0;i<CODE_LENGTH;i++)
     fscanf(fp,"%d", &polarCode[i]); // 循环读
     fclose(fp);
+	
+    i = 0;
+    printf("原始数据为");
+	while(i<CODE_LENGTH) 
+	{
+    printf("%d ",polarCode[i]);
+    i++; 
+    }
+    return 0;
+	
+}
+int write()//将编码后的数据写入文件 
+{
+	int i;
+	const char* filename = "C:/disk/004_polarCode/code/c/encode.txt";
+	FILE* fp;
+	fp = fopen(filename, "w+");
+	for (i=0;i<CODE_LENGTH;i++)
+	{
+    fprintf(fp,"%d", polarCode[i]); // 写入编码后的数据 
+    fprintf(fp,"%s", " "); // 写入空格 
+    }
+    fclose(fp);
+    
+    printf("\n\n");
+    i = 0;
+    printf("经过编码后的数据为");
+	while(i<CODE_LENGTH) 
+	{
+    printf("%d ",polarCode[i]);
+    i++; 
+    }
 	return 0;
 }
+
 int encode()//执行polar码编码
 { 
 	int i, j = 0;
@@ -45,6 +78,7 @@ int encode()//执行polar码编码
 	}
 	level--;
 	if(level)encode();//递归 
+	
 
 	return 0;
 }
@@ -53,6 +87,7 @@ int main(void)
 {
 	load();//加载原始数据
 	encode();//执行polar码编码
+	write();//加载原始数据
 }
 
 
