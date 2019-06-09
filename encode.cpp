@@ -14,7 +14,7 @@
 #include <stdio.h> //C头文件
 #include <stdlib.h>
 #include <math.h>
-#define CODE_LENGTH 8 //定义码长为8
+#define CODE_LENGTH 32 //定义码长为32
 #define LEVEL  log(CODE_LENGTH)/log(2)//编码级数为2的N次幂
 static int level = LEVEL;//每完成一级编码此值递减，初值为编码级数
 int polarCode[CODE_LENGTH];
@@ -22,7 +22,7 @@ int polarCode[CODE_LENGTH];
 int load()//加载原始数据
 {
 	int i;
-	const char* filename = "C:/disk/004_polarCode/code/c/original.txt";
+	const char* filename = "C:/disk/004_polarCode/code/c/32bit_2019_6_9/original.txt";
 	FILE* fp;
 	fp = fopen(filename, "r");
 	for (i=0;i<CODE_LENGTH;i++)
@@ -42,7 +42,7 @@ int load()//加载原始数据
 int write()//将编码后的数据写入文件 
 {
 	int i;
-	const char* filename = "C:/disk/004_polarCode/code/c/encode.txt";
+	const char* filename = "C:/disk/004_polarCode/code/c/32bit_2019_6_9/encode.txt";
 	FILE* fp;
 	fp = fopen(filename, "w+");
 	for (i=0;i<CODE_LENGTH;i++)
